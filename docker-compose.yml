@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "8081:80"
+        volumes:
+            - .:/application
+            - ./docker/nginx/web.conf:/etc/nginx/conf.d/web.conf
+
+    php:
+        build: docker/php-fpm
+        volumes:
+            - .:/application
+            - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+
+    mysql:
+        image: mysql:5.6
+        volumes:
+          - ./docker/db-data:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=abc123
+            - MYSQL_DATABASE=moderentals
+            - MYSQL_USER=dev_user
+            - MYSQL_PASSWORD=dev_passwd
