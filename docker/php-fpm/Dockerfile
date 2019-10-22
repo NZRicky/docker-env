@@ -16,4 +16,5 @@ RUN apt-get update \
     && apt-get install git-flow
 
 # Install vim
-RUN apt-get install vim
+RUN apt-get update \
+    && apt-get -y install vim
