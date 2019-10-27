@@ -3,7 +3,7 @@ services:
     web:
         image: nginx:latest
         ports:
-            - "8081:80"
+            - "8080:80"
         volumes:
             - .:/application
             - ./docker/nginx/web.conf:/etc/nginx/conf.d/web.conf
@@ -12,7 +12,9 @@ services:
         build: docker/php-fpm
         volumes:
             - .:/application
-            - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+            #- ./docker/php-fpm/php-ext-xdebug-overrides.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+        environment:
+          XDEBUG_CONFIG: "remote_host=${localIp}"
 
     mysql:
         image: mysql:5.6
