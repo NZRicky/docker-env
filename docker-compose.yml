@@ -8,7 +8,7 @@ services:
             - .:/application
             - ./docker/nginx/web.conf:/etc/nginx/conf.d/web.conf
 
-    php:
+    app:
         build: docker/php-fpm
         volumes:
             - .:/application
@@ -16,7 +16,7 @@ services:
         environment:
           XDEBUG_CONFIG: "remote_host=${localIp}"
 
-    mysql:
+    database:
         image: mysql:5.6
         volumes:
           - ./docker/db-data:/var/lib/mysql
@@ -26,4 +26,4 @@ services:
             - MYSQL_USER=dev_user
             - MYSQL_PASSWORD=dev_passwd
         ports:
-            - "3308:3306"
+            - "6033:3306"
