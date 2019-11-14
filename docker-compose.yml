@@ -22,7 +22,7 @@ services:
           - ./docker/db-data:/var/lib/mysql
         environment:
             - MYSQL_ROOT_PASSWORD=abc123
-            - MYSQL_DATABASE="${DB_NAME}"
+            - MYSQL_DATABASE=${DB_NAME}
             - MYSQL_USER=dev_user
             - MYSQL_PASSWORD=dev_passwd
         ports:
