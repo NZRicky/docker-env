@@ -16,6 +16,7 @@ RUN apt-get update && \
             vim \
             g++ \
             git \
+            git-flow \
             curl \
             imagemagick \
             libfreetype6-dev \
@@ -51,13 +52,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
         --filename=composer \
         --install-dir=/usr/local/bin && \
     /usr/local/bin/composer clear-cache
-
-RUN apt-get update \
-    && apt-get -y install git \
-    git-flow \
-    curl \
-    imagemagick \
-    libmagickwand-dev
 
 RUN docker-php-ext-install \
             soap \
