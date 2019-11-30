@@ -53,6 +53,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
         --install-dir=/usr/local/bin && \
     /usr/local/bin/composer clear-cache
 
+# Install node
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash && \
+    apt-get install -y nodejs
+
+# Install php extensions
 RUN docker-php-ext-install \
             soap \
             zip \

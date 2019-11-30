@@ -26,4 +26,4 @@ services:
             - MYSQL_USER=dev_user
             - MYSQL_PASSWORD=dev_passwd
         ports:
-            - "6033:3306"
+            - "${MYSQL_PORT}:3306"
