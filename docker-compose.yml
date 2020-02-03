@@ -5,13 +5,13 @@ services:
         ports:
             - "${WEB_PORT}:80"
         volumes:
-            - ./mymoney:/application
+            - ./silverstripe:/application
             - ./docker/nginx/web.conf:/etc/nginx/conf.d/web.conf
 
     app:
         build: docker/php-fpm
         volumes:
-            - ./mymoney:/application
+            - ./silverstripe:/application
             #- ./docker/php-fpm/php-ext-xdebug-overrides.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
         environment:
           XDEBUG_CONFIG: "remote_host=${LOCAL_IP} remote_port=${XDEBUG_REMOTE_PORT}"
